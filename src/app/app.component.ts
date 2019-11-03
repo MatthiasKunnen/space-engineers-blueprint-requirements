@@ -17,6 +17,10 @@ export class AppComponent {
             name: string,
             url: string,
         }> = [
+            {
+                name: 'logo',
+                url: 'safety-helmet',
+            },
         ];
 
         addIcons.forEach(i => {

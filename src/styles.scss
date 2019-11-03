@@ -22,6 +22,10 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+.flex-spacer {
+    flex-grow: 1;
+}
+
 mat-spinner, mat-progress-spinner {
 
     &.inline {
@@ -38,4 +42,11 @@ button.link {
     color: inherit;
     font: inherit;
     cursor: pointer;
+}
+
+@media (min-width: 720px) {
+
+    .right-margin-8-720 {
+        margin-right: 8px;
+    }
 }

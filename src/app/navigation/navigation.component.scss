@@ -1,0 +1,28 @@
+:host {
+    display: block;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+#nav-logo {
+    margin-right: 8px;
+}
+
+@media (max-width: 719px) {
+
+    .nav-hide-small {
+        display: none;
+    }
+}
+
+@media (min-width: 720px) {
+
+    .nav-hide-large {
+        display: none;
+    }
+}
