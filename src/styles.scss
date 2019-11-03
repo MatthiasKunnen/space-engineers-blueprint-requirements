@@ -1,0 +1,69 @@
+@import '~@angular/material/theming';
+
+$typography: mat-typography-config(
+    $font-family: 'Roboto, sans-serif',
+    $headline: mat-typography-level(32px, 48px, 400),
+    $body-2: mat-typography-level(16px, 26px, 500),
+    $body-1: mat-typography-level(16px, 22px, 400),
+    $caption: mat-typography-level(14px, 20px, 400),
+    $button: mat-typography-level(16px, 16px, 500)
+);
+
+@include mat-core($typography);
+
+$app-primary: mat-palette($mat-green, 700);
+$app-accent: mat-palette($mat-amber, 300);
+
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@include angular-material-theme($app-theme);
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.text {
+
+    &-error {
+        color: mat-color($mat-red, 500);
+    }
+
+    &-success {
+        color: mat-color($mat-green, 500);
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.split-16 {
+    display: grid;
+    grid-column-gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+mat-spinner, mat-progress-spinner {
+
+    &.inline {
+        display: inline-block;
+        margin: 0;
+    }
+}
+
+button.link {
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #444;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
