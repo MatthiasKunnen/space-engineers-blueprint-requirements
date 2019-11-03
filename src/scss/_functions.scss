@@ -1,0 +1,46 @@
+/* stylelint-disable */
+// Stylelint's rules don't work nicely with complex SCSS syntax
+
+/**
+ * Add quotes around a string regardless of existing quotes.
+ */
+@function force-quote($string) {
+    @return "'#{$string}'";
+}
+
+/**
+ * Transforms a list using a transform function. For each item in the list, the
+ * transform function is called.
+ */
+@function transform($transformFn, $list) {
+    $result: ();
+
+    @for $i from 1 through length($list) {
+        $result: append($result, call($transformFn, nth($list, $i)));
+    }
+
+    @return $result;
+}
+
+
+// Thanks to Hugo Giraudel
+// https://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+@function to-string($list, $glue: '', $is-nested: false) {
+    $result: null;
+
+    @for $i from 1 through length($list) {
+        $e: nth($list, $i);
+
+        @if type-of($e) == list {
+            $result: $result#{to-string($e, $glue, true)};
+        } @else {
+            $result: if(
+                $i != length($list) or $is-nested,
+                $result#{$e}#{$glue},
+                $result#{$e}
+            );
+        }
+    }
+
+    @return $result;
+}

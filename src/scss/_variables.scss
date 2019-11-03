@@ -1,0 +1,44 @@
+@import 'functions';
+@import '~@angular/material/theming';
+
+$fonts: (
+    system-ui,
+    -apple-system, /* macOS 10.11-10.12 */
+    'Segoe UI', /* Windows 6+ */
+    'Roboto', /* Android 4+ */
+    'Ubuntu', /* Ubuntu 10.10+ */
+    'Cantarell', /* Gnome 3+ */
+    'Noto Sans', /* KDE Plasma 5+ */
+    sans-serif, /* fallback */
+    'Apple Color Emoji', /* macOS emoji */
+    'Segoe UI Emoji', /* Windows emoji */
+    'Segoe UI Symbol', /* Windows emoji */
+    'Noto Color Emoji', /* Linux emoji */
+);
+
+$complete-font: to-string(
+    transform(
+        get-function('force-quote'),
+        $fonts
+    ),
+    ', '
+);
+
+$typography: mat-typography-config(
+    $font-family: $complete-font,
+    $headline: mat-typography-level(32px, 48px, 400),
+    $body-2: mat-typography-level(16px, 26px, 500),
+    $body-1: mat-typography-level(16px, 22px, 400),
+    $caption: mat-typography-level(14px, 20px, 400),
+    $button: mat-typography-level(16px, 16px, 500)
+);
+
+$palette-primary: mat-palette($mat-blue);
+$palette-accent: mat-palette($mat-cyan);
+$palette-warn: mat-palette($mat-red);
+
+$primary: mat-color($palette-primary);
+$accent: mat-color($palette-accent);
+$warn: mat-color($palette-warn);
+
+$theme: mat-dark-theme($palette-primary, $palette-accent, $palette-warn);
