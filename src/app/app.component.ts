@@ -18,6 +18,10 @@ export class AppComponent {
             url: string,
         }> = [
             {
+                name: 'github',
+                url: 'github-mark',
+            },
+            {
                 name: 'logo',
                 url: 'safety-helmet',
             },
