@@ -5,6 +5,13 @@
         "/**": "index.html"
     },
     "headers": {
+        "/**": {
+            "Referrer-Policy": "same-origin",
+            "Strict-Transport-Security": "max-age=63072000",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "deny",
+            "X-XSS-Protection": "1; mode=block"
+        },
         "/": {
             "Cache-Control": "no-store, no-cache"
         },
