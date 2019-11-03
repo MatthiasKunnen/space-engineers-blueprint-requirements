@@ -12,15 +12,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './error/not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import {
+    RequirementExtractorComponent,
+} from './requirement-extractor/requirement-extractor.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent,
         NavigationComponent,
         NotFoundComponent,
+        RequirementExtractorComponent,
     ],
     imports: [
         AppRoutingModule,

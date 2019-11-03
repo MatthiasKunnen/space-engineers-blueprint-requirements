@@ -1,0 +1,11 @@
+@mixin container {
+    display: block;
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 16px;
+
+    @media (max-width: 719px) {
+        padding: 8px;
+    }
+}
