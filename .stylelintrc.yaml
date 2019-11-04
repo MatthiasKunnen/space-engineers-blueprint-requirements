@@ -59,7 +59,7 @@ rules:
   declaration-colon-space-before: never
   declaration-empty-line-before: null
   font-family-name-quotes: always-where-recommended
-  font-weight-notation: numeric
+  font-weight-notation: named-where-possible
   function-calc-no-unspaced-operator: true
   function-comma-newline-after: always-multi-line
   function-comma-space-after: always-single-line
