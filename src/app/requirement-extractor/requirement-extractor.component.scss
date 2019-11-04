@@ -3,3 +3,33 @@
 :host {
     @include container;
 }
+
+form {
+    display: flex;
+
+    > * {
+        flex-grow: 1;
+
+        &:not(:last-child) {
+            margin-right: 16px;
+        }
+    }
+
+    .radio-group-container {
+
+        label {
+            display: block;
+            margin-bottom: 1.5em;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            margin-left: 2em;
+
+            > * {
+                margin-bottom: 8px;
+            }
+        }
+    }
+}

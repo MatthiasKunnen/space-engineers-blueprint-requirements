@@ -1,1 +1,24 @@
-<p>requirement-extractor works!</p>
+<form [formGroup]="form">
+    <mat-form-field>
+            <textarea matInput
+                      placeholder="Paste content of *.sbc file here"
+                      formControlName="blueprintXml"
+                      required
+                      matAutosizeMinRows="10"
+                      matAutosizeMaxRows="10"
+                      matTextareaAutosize>
+            </textarea>
+    </mat-form-field>
+    <div class="radio-group-container">
+        <label id="export-type-radio-group-label">Select export type:</label>
+        <mat-radio-group class="radio-group"
+                         formControlName="exportType"
+                         aria-labelledby="export-type-radio-group-label">
+            <mat-radio-button value="ini">ini</mat-radio-button>
+            <mat-radio-button value="json">JSON</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</form>
+<p *ngIf="name != null">Blueprint name: <strong>{{ name }}</strong></p>
+<p class="text-error" *ngIf="error != null">{{ error }}</p>
+<pre class="export" *ngIf="export != null">{{ export }}</pre>
