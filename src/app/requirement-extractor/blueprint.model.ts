@@ -16,11 +16,19 @@ export class Blueprint {
 
         console.log(dom);
 
-        dom.querySelectorAll('MyObjectBuilder_CubeBlock > SubtypeName').forEach(block => {
-            const blockType = block.textContent;
-            if (blockType === null) {
-                console.warn('Empty SubtypeName found');
+        dom.querySelectorAll('MyObjectBuilder_CubeBlock').forEach(block => {
+            const subtypeElement = block.querySelector('SubtypeName');
+
+            if (subtypeElement === null) {
+                console.warn(`Found no SubtypeName in`, block);
                 return;
+            }
+
+            let blockType = `${block.getAttribute('xsi:type')}`;
+
+            const subtype = subtypeElement.textContent;
+            if (subtype !== null && subtype !== '') {
+                blockType += `/${subtype}`;
             }
 
             blocks[blockType] = blocks[blockType] as any !== undefined ? blocks[blockType] : 0;
