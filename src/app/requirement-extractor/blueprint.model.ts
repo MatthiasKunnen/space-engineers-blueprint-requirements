@@ -14,7 +14,7 @@ export class Blueprint {
             throw new Error('Error while parsing XML');
         }
 
-        console.log(dom);
+        console.log('DOM read:', dom);
 
         dom.querySelectorAll('MyObjectBuilder_CubeBlock').forEach(block => {
             const subtypeElement = block.querySelector('SubtypeName');

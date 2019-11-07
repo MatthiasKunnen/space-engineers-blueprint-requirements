@@ -43,7 +43,13 @@ export class RequirementExtractorComponent implements OnDestroy, OnInit {
         });
     }
 
-    async update({exportType, file}: {exportType: 'ini' | 'json', file: File}) {
+    async update({exportType, file}: {exportType: 'ini' | 'json', file: File | null}) {
+        if (file === null) {
+            return;
+        }
+
+        console.log(`Current file`, file);
+
         const reader = new FileReader();
         const fileString: string | null | undefined = await new Promise(((resolve, reject) => {
             reader.onload = () => resolve(reader.result as any);
