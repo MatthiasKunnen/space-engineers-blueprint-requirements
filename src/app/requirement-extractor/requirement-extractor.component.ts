@@ -28,32 +28,46 @@ export class RequirementExtractorComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.form = new FormGroup({
-            blueprintXml: new FormControl(null, Validators.required),
             exportType: new FormControl('ini', Validators.required),
+            file: new FormControl(null),
         });
         this.form.valueChanges.pipe(
             takeUntil(this.destroyed),
-        ).subscribe(value => this.update(value));
+        ).subscribe(async value => {
+            try {
+                await this.update(value);
+            } catch (e) {
+                console.error(e);
+                this.error = e.message;
+            }
+        });
     }
 
-    update({blueprintXml, exportType}: {blueprintXml: string, exportType: 'ini' | 'json'}): void {
-        try {
-            this.error = null;
-            this.export = null;
-            this.name = null;
-            const blueprint = Blueprint.fromXml(blueprintXml);
-            this.name = blueprint.name;
-            switch (exportType) {
-                case 'ini':
-                    this.export = blueprint.exportBlocksAsIni();
-                    break;
-                case 'json':
-                    this.export = blueprint.exportBlocksAsJson();
-                    break;
-            }
-        } catch (e) {
-            console.error(e);
-            this.error = e.message;
+    async update({exportType, file}: {exportType: 'ini' | 'json', file: File}) {
+        const reader = new FileReader();
+        const fileString: string | null | undefined = await new Promise(((resolve, reject) => {
+            reader.onload = () => resolve(reader.result as any);
+            reader.onerror = reject;
+            reader.readAsText(file);
+        }));
+
+        if (fileString == null) {
+            this.error = 'Uploaded file is null or undefined';
+            return;
+        }
+
+        this.error = null;
+        this.export = null;
+        this.name = null;
+        const blueprint = Blueprint.fromXml(fileString);
+        this.name = blueprint.name;
+        switch (exportType) {
+            case 'ini':
+                this.export = blueprint.exportBlocksAsIni();
+                break;
+            case 'json':
+                this.export = blueprint.exportBlocksAsJson();
+                break;
         }
     }
 }

@@ -1,14 +1,5 @@
 <form [formGroup]="form">
-    <mat-form-field>
-            <textarea matInput
-                      placeholder="Paste content of *.sbc file here"
-                      formControlName="blueprintXml"
-                      required
-                      matAutosizeMinRows="10"
-                      matAutosizeMaxRows="10"
-                      matTextareaAutosize>
-            </textarea>
-    </mat-form-field>
+    <app-file-select (fileChanged)="form.controls.file.setValue($event)"></app-file-select>
     <div class="radio-group-container">
         <label id="export-type-radio-group-label">Select export type:</label>
         <mat-radio-group class="radio-group"

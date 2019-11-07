@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './error/not-found/not-found.component';
+import { DragDropDirective } from './file-select/drag-drop.directive';
+import { FileSelectComponent } from './file-select/file-select.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import {
     RequirementExtractorComponent,
@@ -21,6 +23,8 @@ import {
 @NgModule({
     declarations: [
         AppComponent,
+        DragDropDirective,
+        FileSelectComponent,
         NavigationComponent,
         NotFoundComponent,
         RequirementExtractorComponent,

@@ -1,0 +1,8 @@
+<div class="file-upload dragging" (click)="fileInput.click()" appDragDrop (fileDropped)="selectFile($event)">
+    <input hidden
+           type="file"
+           accept=".sbc,.xml,application/xml"
+           #fileInput
+           (change)="selectFile($event.target.files[0])">
+    <span>Drop .sbc file here or click to browse</span>
+</div>
