@@ -48,6 +48,11 @@ export class RequirementExtractorComponent implements OnDestroy, OnInit {
             return;
         }
 
+        if (file.name.endsWith('.sbcB5')) {
+            this.error = `.sbcB5 files cannot be read. Upload the .sbc file instead`;
+            return;
+        }
+
         console.log(`Current file`, file);
 
         const reader = new FileReader();
